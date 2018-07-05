@@ -6,8 +6,8 @@ class Morpheus
     'E' => '-e',
     'K' => '-k',
     'L' => '-l',
-    'P' => '-p',
-    'V' => '-v',
+    'P' => '-P',
+    'V' => '-V',
   }
 
   def initialize(morphlib, executable)
