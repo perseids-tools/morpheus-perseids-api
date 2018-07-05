@@ -13,8 +13,3 @@ end
 get "/latin/:word" do
   settings.morpheus.response(params[:word], params[:opts], :Latin)
 end
-
-error Sinatra::NotFound do
-  body ''
-  halt 404
-end
