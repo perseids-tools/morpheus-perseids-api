@@ -1,8 +1,9 @@
 require 'sinatra'
+require './lib/config'
 require './lib/morpheus'
 
 set :protection, except: [:path_traversal]
-set :morpheus, Morpheus.new('../morpheus-perseids-2/stemlib', '../morpheus-perseids-2/bin/cruncher')
+set :morpheus, Morpheus.new(Config::MORPHLIB, Config::EXECUTABLE)
 
 get "/greek/:word" do
   settings.morpheus.response(params[:word], params[:opts], :Greek)
