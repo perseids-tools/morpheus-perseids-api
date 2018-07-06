@@ -2,8 +2,5 @@ version: '3'
 services:
   web:
     build: .
-    command: bundle exec ruby app.rb
-    environment:
-      - RACK_ENV=production
     ports:
       - "1315:1315"
