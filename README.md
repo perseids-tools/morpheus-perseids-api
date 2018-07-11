@@ -1,6 +1,6 @@
-# Morpheus Server
+# Morpheus API
 
-Morpheus Server provides a web interface for the
+Morpheus API provides an API interface for the
 [Morpheus](https://github.com/perseids-tools/morpheus)
 morphological parsing tool.
 
@@ -20,14 +20,14 @@ docker-compose up
 
 #### Including in other compose files
 
-Include `perseidsproject/morpheus-server` as one of your services in `docker-compose.yml`.
+Include `perseidsproject/morpheus-api` as one of your services in `docker-compose.yml`.
 The simplest version would be:
 
 ```yaml
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-server:v1.0.0
+    image: perseidsproject/morpheus-api:v1.0.0
     ports:
       - "1315:1315"
 ```
@@ -39,20 +39,20 @@ For example, if you want to run on port 3000:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-server:v1.0.0
+    image: perseidsproject/morpheus-api:v1.0.0
     environment:
       - PORT=3000
     ports:
       - "3000:3000"
 ```
 
-(See project on [Docker Hub](https://hub.docker.com/r/perseidsproject/morpheus-server/).)
+(See project on [Docker Hub](https://hub.docker.com/r/perseidsproject/morpheus-api/).)
 
 ### Unix/Linux
 
 Requirements:
 
-- ruby (~> 2.5)
+- ruby (~2.5)
 - bundler
 
 ```bash

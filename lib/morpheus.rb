@@ -16,7 +16,7 @@ class Morpheus
   end
 
   def response(word, opts, lang)
-    command = [executable, *lang_ops(lang), *options(opts)]
+    command = [executable, *language_options(lang), *options(opts)]
 
     IO.popen({ 'MORPHLIB' => morphlib }, command, 'r+') do |io|
       io.puts(word)
@@ -29,7 +29,7 @@ class Morpheus
 
   attr_reader :morphlib, :executable
 
-  def lang_ops(lang)
+  def language_options(lang)
     case lang
     when :Latin then ['-L']
     else []
