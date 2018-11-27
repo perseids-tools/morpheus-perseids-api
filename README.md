@@ -27,7 +27,7 @@ The simplest version would be:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-api:v1.0.0
+    image: perseidsproject/morpheus-api:v1.0.1
     ports:
       - "1315:1315"
 ```
@@ -39,7 +39,7 @@ For example, if you want to run on port 3000:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-api:v1.0.0
+    image: perseidsproject/morpheus-api:v1.0.1
     environment:
       - PORT=3000
     ports:
