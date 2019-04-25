@@ -69,26 +69,29 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 ```xml
 <words>
-<word>
-<form xml:lang="grc-x-beta">a)/nqrwpos</form>
-<entry>
-<dict>
-<hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<gend>masculine</gend>
-</dict>
-<infl>
-<term xml:lang="grc-x-beta"><stem>a)nqrwp</stem><suff>os</suff></term>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<case order="7">nominative</case>
-<gend>masculine</gend>
-<num>singular</num>
-<stemtype>os_ou</stemtype>
-</infl>
-</entry>
-</word>
+  <word>
+    <form xml:lang="grc-x-beta">a)/nqrwpos</form>
+    <entry>
+      <dict>
+        <hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <gend>masculine</gend>
+      </dict>
+      <infl>
+        <term xml:lang="grc-x-beta">
+          <stem>a)nqrwp</stem>
+          <suff>os</suff>
+        </term>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <case order="7">nominative</case>
+        <gend>masculine</gend>
+        <num>singular</num>
+        <stemtype>os_ou</stemtype>
+      </infl>
+    </entry>
+  </word>
 </words>
 ```
 
@@ -96,26 +99,29 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 ```xml
 <words>
-<word>
-<form xml:lang="lat">cactus</form>
-<entry>
-<dict>
-<hdwd xml:lang="lat">cactus</hdwd>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<gend>masculine</gend>
-</dict>
-<infl>
-<term xml:lang="lat"><stem>cact</stem><suff>us</suff></term>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<case order="7">nominative</case>
-<gend>masculine</gend>
-<num>singular</num>
-<stemtype>us_i</stemtype>
-</infl>
-</entry>
-</word>
+  <word>
+    <form xml:lang="lat">cactus</form>
+    <entry>
+      <dict>
+        <hdwd xml:lang="lat">cactus</hdwd>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <gend>masculine</gend>
+      </dict>
+      <infl>
+        <term xml:lang="lat">
+          <stem>cact</stem>
+          <suff>us</suff>
+        </term>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <case order="7">nominative</case>
+        <gend>masculine</gend>
+        <num>singular</num>
+        <stemtype>us_i</stemtype>
+      </infl>
+    </entry>
+  </word>
 </words>
 ```
 
@@ -123,54 +129,56 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 ```xml
 <words>
-<word>
-<form xml:lang="grc-x-beta">a)/nqrwpos</form>
-<dump_analysis>
-  <self>
-    <form>0200440000</form>
-      <form.number>01</form.number>
-      <form.case>01</form.case>
-      <form.gender>01</form.gender>
-    <stem>010201 os_ou</stem>
-    <str>a)/nqrwpos</str>
-  </self>
-  <stem>
-    <form>0200000000</form>
-      <form.gender>01</form.gender>
-    <stem>010201 os_ou</stem>
-    <str>a)nqrwp</str>
-  </stem>
-  <end>
-    <form>0200440000</form>
-      <form.number>01</form.number>
-      <form.case>01</form.case>
-      <form.gender>01</form.gender>
-    <stem>010201 os_ou</stem>
-    <str>os</str>
-  </end>
-  <rawword>a)/nqrwpos</rawword>
-  <wkword>a)/nqrwpos</wkword>
-</dump_analysis>
-<entry>
-<dict>
-<hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<gend>masculine</gend>
-</dict>
-<infl>
-<term xml:lang="grc-x-beta"><stem>a)nqrwp</stem><suff>os</suff></term>
-<pofs order="3">noun</pofs>
-<decl>2nd</decl>
-<case order="7">nominative</case>
-<gend>masculine</gend>
-<num>singular</num>
-<stemtype>os_ou</stemtype>
-</infl>
-</entry>
-</word>
+  <word>
+    <form xml:lang="grc-x-beta">a)/nqrwpos</form>
+    <dump_analysis>
+      <self>
+        <form>0200440000</form>
+        <form.number>01</form.number>
+        <form.case>01</form.case>
+        <form.gender>01</form.gender>
+        <stem>010201 os_ou</stem>
+        <str>a)/nqrwpos</str>
+      </self>
+      <stem>
+        <form>0200000000</form>
+        <form.gender>01</form.gender>
+        <stem>010201 os_ou</stem>
+        <str>a)nqrwp</str>
+      </stem>
+      <end>
+        <form>0200440000</form>
+        <form.number>01</form.number>
+        <form.case>01</form.case>
+        <form.gender>01</form.gender>
+        <stem>010201 os_ou</stem>
+        <str>os</str>
+      </end>
+      <rawword>a)/nqrwpos</rawword>
+      <wkword>a)/nqrwpos</wkword>
+    </dump_analysis>
+    <entry>
+      <dict>
+        <hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <gend>masculine</gend>
+      </dict>
+      <infl>
+        <term xml:lang="grc-x-beta">
+          <stem>a)nqrwp</stem>
+          <suff>os</suff>
+        </term>
+        <pofs order="3">noun</pofs>
+        <decl>2nd</decl>
+        <case order="7">nominative</case>
+        <gend>masculine</gend>
+        <num>singular</num>
+        <stemtype>os_ou</stemtype>
+      </infl>
+    </entry>
+  </word>
 </words>
-
 ```
 
 ### Details
