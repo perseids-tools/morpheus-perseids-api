@@ -6,6 +6,7 @@ ADD . /app
 WORKDIR /app
 
 ENV RACK_ENV=production
+ENV BUNDLE_SILENCE_ROOT_WARNING 1
 
 RUN gem install bundler --version 2.0.1
 RUN bundle install
