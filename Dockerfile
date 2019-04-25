@@ -7,7 +7,7 @@ WORKDIR /app
 
 ENV RACK_ENV=production
 
-RUN gem install bundler
+RUN gem install bundler --version 2.0.1
 RUN bundle install
 
 CMD bundle exec ruby app.rb
