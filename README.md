@@ -1,8 +1,8 @@
-# Morpheus API
+# Morpheus Perseids API
 
-Morpheus API provides an API interface for the
-[Morpheus](https://github.com/perseids-tools/morpheus)
-morphological parsing tool.
+Morpheus Perseids API provides an API interface for the
+[Morpheus Perseids](https://github.com/perseids-tools/morpheus-perseids)
+version of the Morpheus morphological parsing tool.
 
 It takes Ancient Greek or Latin text as input and then lemmatizes the text
 and performs a morphological analysis.
@@ -20,16 +20,16 @@ docker-compose up
 
 #### Including in other compose files
 
-Include `perseidsproject/morpheus-api` as one of your services in `docker-compose.yml`.
+Include `perseidsproject/morpheus-perseids-api` as one of your services in `docker-compose.yml`.
 The simplest version would be:
 
 ```yaml
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-api:v1.0.2
+    image: perseidsproject/morpheus-perseids-api:v1.0.0
     ports:
-      - "1315:1315"
+      - "1316:1316"
 ```
 
 The port can be customized using an environment variable.
@@ -39,14 +39,14 @@ For example, if you want to run on port 3000:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-api:v1.0.2
+    image: perseidsproject/morpheus-perseids-api:v1.0.0
     environment:
       - PORT=3000
     ports:
       - "3000:3000"
 ```
 
-(See project on [Docker Hub](https://hub.docker.com/r/perseidsproject/morpheus-api/).)
+(See project on [Docker Hub](https://hub.docker.com/r/perseidsproject/morpheus-perseids-api/).)
 
 ### Unix/Linux
 
@@ -58,32 +58,119 @@ Requirements:
 ```bash
 bundle install
 
-MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/cruncher bundle exec ruby app.rb
+MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 ```
 
 ## Usage
 
 ### Examples
 
-`http://localhost:1315/greek/a)%2Fnqrwpos`:
+`http://localhost:1316/greek/a)%2Fnqrwpos`:
 
-```
-a)/nqrwpos
-<NL>N a)/nqrwpos  masc nom sg			os_ou</NL>
+```xml
+<words>
+<word>
+<form xml:lang="grc-x-beta">a)/nqrwpos</form>
+<entry>
+<dict>
+<hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<gend>masculine</gend>
+</dict>
+<infl>
+<term xml:lang="grc-x-beta"><stem>a)nqrwp</stem><suff>os</suff></term>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<case order="7">nominative</case>
+<gend>masculine</gend>
+<num>singular</num>
+<stemtype>os_ou</stemtype>
+</infl>
+</entry>
+</word>
+</words>
 ```
 
-`http://localhost:1315/latin/cactus`:
+`http://localhost:1316/latin/cactus`:
 
-```
-cactus
-<NL>N cactus  masc nom sg			us_i</NL>
+```xml
+<words>
+<word>
+<form xml:lang="lat">cactus</form>
+<entry>
+<dict>
+<hdwd xml:lang="lat">cactus</hdwd>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<gend>masculine</gend>
+</dict>
+<infl>
+<term xml:lang="lat"><stem>cact</stem><suff>us</suff></term>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<case order="7">nominative</case>
+<gend>masculine</gend>
+<num>singular</num>
+<stemtype>us_i</stemtype>
+</infl>
+</entry>
+</word>
+</words>
 ```
 
-`http://localhost:1315/greek/a)%2Fnqrwpou?opts=n`:
+`http://localhost:1316/greek/a)%2Fnqrwpos?opts=i`:
 
-```
-a)/nqrwpou
-<NL>N a)nqrw/pou,a)/nqrwpos  masc gen sg			os_ou</NL><NL>V a_)nqrwpou=,a)nqrwpo/omai  imperf ind mp 2nd sg	doric aeolic	contr	ow_pr,ow_denom</NL><NL>V a)nqrwpou=,a)nqrwpo/omai  pres imperat mp 2nd sg		contr	ow_pr,ow_denom</NL><NL>V a)nqrwpou=,a)nqrwpo/omai  imperf ind mp 2nd sg	homeric ionic	contr unaugmented	ow_pr,ow_denom</NL><NL>N a)nqrwpou=,a)nqrwpw/  fem nom/voc/acc dual		contr	w_oos</NL>
+```xml
+<words>
+<word>
+<form xml:lang="grc-x-beta">a)/nqrwpos</form>
+<dump_analysis>
+  <self>
+    <form>0200440000</form>
+      <form.number>01</form.number>
+      <form.case>01</form.case>
+      <form.gender>01</form.gender>
+    <stem>010201 os_ou</stem>
+    <str>a)/nqrwpos</str>
+  </self>
+  <stem>
+    <form>0200000000</form>
+      <form.gender>01</form.gender>
+    <stem>010201 os_ou</stem>
+    <str>a)nqrwp</str>
+  </stem>
+  <end>
+    <form>0200440000</form>
+      <form.number>01</form.number>
+      <form.case>01</form.case>
+      <form.gender>01</form.gender>
+    <stem>010201 os_ou</stem>
+    <str>os</str>
+  </end>
+  <rawword>a)/nqrwpos</rawword>
+  <wkword>a)/nqrwpos</wkword>
+</dump_analysis>
+<entry>
+<dict>
+<hdwd xml:lang="grc-x-beta">a)/nqrwpos</hdwd>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<gend>masculine</gend>
+</dict>
+<infl>
+<term xml:lang="grc-x-beta"><stem>a)nqrwp</stem><suff>os</suff></term>
+<pofs order="3">noun</pofs>
+<decl>2nd</decl>
+<case order="7">nominative</case>
+<gend>masculine</gend>
+<num>singular</num>
+<stemtype>os_ou</stemtype>
+</infl>
+</entry>
+</word>
+</words>
+
 ```
 
 ### Details
@@ -106,26 +193,10 @@ to be escaped as `%2F`, so the word `ἄνθρωπος` would be entered as `a)%
 Each route also accept the `?opts=:options` query parameter where `:options` contains the options
 sent to Morpheus. Each option is a single letter and can be combined with other options.
 
-For example, to find only headwords (`-l`) and ignore accents (`-n`) for the word `ἀστη`, go to
-`http://localhost:1315/greek/a)sth?opts=nl`.
-
-The result is:
-
-```
-form:a)sth
-a)/stu
-a)sth/
-```
-
-The full list of options and their equivalents in Morpheus is:
+The full list of options and their equivalents in Morpheus Perseids is:
 
 | Option | In Morpheus | Description |
 | - | - | - |
 | s | -S | Turn off Strict case. For Greek, this allows words with an initial capital to be recognized. For languages in the Roman alphabet, allows words with initial capital or in all capitals. |
-| n | -n | Ignore accents.|
-| d | -d | Database format. This switch changes the output from "Perseus format" to "database format." Output appears in a series of tagged fields. |
-| e | -e | Ending index. Instead of showing the analysis in readable form, this switch gives the indices of the tense, mood, case, number, and so on (as appropriate) in the internal tables. |
-| k | -k | Keep beta-code. When "Perseus format" is enabled (the default), this switch does nothing. When "Perseus format" is off, output (Greek as well as Latin) is converted to the old Greek Keys encoding. This switch disables that conversion so that Greek output stays in beta-code. |
-| l | -l | Show lemma. When this switch is set, instead of printing the entire analysis, cruncher will only show the lemma or headword from which the given form is made. |
-| p | -P | Turn off Perseus format. Output will be in the form `$feminam& is^M &from$ femina^M $fe\_minam^M [&stem $fe\_min-& ]^M & a\_ae fem acc sg^M`. Note the returns, without line feeds, between the fields. |
 | v | -V | Analyze verbs only. |
+| i | -i | Show more detailed output |

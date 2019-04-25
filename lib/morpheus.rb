@@ -1,13 +1,8 @@
 class Morpheus
   OPTS = {
-    'S' => '-S',
-    'N' => '-n',
-    'D' => '-d',
-    'E' => '-e',
-    'K' => '-k',
-    'L' => '-l',
-    'P' => '-P',
+    'I' => '-i',
     'V' => '-V',
+    'S' => '-S',
   }
 
   def initialize(morphlib, executable)
