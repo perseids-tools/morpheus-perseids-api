@@ -2,5 +2,7 @@ version: '3'
 services:
   web:
     build: .
+    volumes:
+      - .:/app
     ports:
       - "1316:1316"
