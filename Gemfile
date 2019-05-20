@@ -1,4 +1,8 @@
-source "http://rubygems.org/"
+source 'http://rubygems.org/'
 
-gem "sinatra"
-gem "puma"
+gem 'puma'
+gem 'sinatra'
+
+group :development do
+  gem 'rubocop'
+end
