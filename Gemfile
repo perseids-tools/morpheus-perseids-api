@@ -1,5 +1,6 @@
 source 'http://rubygems.org/'
 
+gem 'beta_code'
 gem 'puma'
 gem 'rake'
 gem 'redis'

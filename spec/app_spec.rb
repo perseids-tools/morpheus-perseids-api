@@ -2,6 +2,13 @@ require 'spec_helper.rb'
 
 describe 'greek' do
   it 'should respond with information about the word' do
+    get "/greek/#{CGI.escape('ἄνθρωπος')}"
+
+    expect(last_response).to be_ok
+    expect(last_response.body).to be_equivalent_to(fixture('anthropos.xml'))
+  end
+
+  it 'should accept beta code input' do
     get '/greek/a)%2Fnqrwpos'
 
     expect(last_response).to be_ok

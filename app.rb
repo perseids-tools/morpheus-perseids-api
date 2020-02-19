@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'redis'
 require 'json'
+require 'beta_code'
 require './lib/config'
 require './lib/morpheus'
 
@@ -16,7 +17,8 @@ get '/greek/:word' do
   cached = redis.get(key)
   return cached if cached
 
-  settings.morpheus.response(params[:word], params[:opts], :Greek).tap do |content|
+  word = BetaCode.greek_to_beta_code(params[:word])
+  settings.morpheus.response(word, params[:opts], :Greek).tap do |content|
     redis.set(key, content)
     redis.expire(key, Config::EXPIRY)
   end
