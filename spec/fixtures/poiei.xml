@@ -1,0 +1,38 @@
+
+<words>
+<word>
+<form xml:lang="grc-x-beta">poiei=</form>
+<entry>
+<dict>
+<hdwd xml:lang="grc-x-beta">poie/w</hdwd>
+<pofs order="1">verb</pofs>
+</dict>
+<infl>
+<term xml:lang="grc-x-beta"><stem>poi</stem><suff>ei=</suff></term>
+<pofs order="1">verb</pofs>
+<mood>indicative</mood>
+<num>singular</num>
+<pers>2nd</pers>
+<tense>present</tense>
+<voice>mediopassive</voice>
+<dial>Attic epic Doric Ionic</dial>
+<stemtype>ew_pr</stemtype>
+<derivtype>ew_denom</derivtype>
+<morph>contr</morph>
+</infl>
+<infl>
+<term xml:lang="grc-x-beta"><stem>poi</stem><suff>ei=</suff></term>
+<pofs order="1">verb</pofs>
+<mood>indicative</mood>
+<num>singular</num>
+<pers>3rd</pers>
+<tense>present</tense>
+<voice>active</voice>
+<dial>Attic epic Doric Ionic</dial>
+<stemtype>ew_pr</stemtype>
+<derivtype>ew_denom</derivtype>
+<morph>contr</morph>
+</infl>
+</entry>
+</word>
+</words>

@@ -69,6 +69,7 @@ PLATFORMS
 DEPENDENCIES
   beta_code
   equivalent-xml
+  nokogiri
   puma
   rack-test
   rake

@@ -8,6 +8,13 @@ describe 'greek' do
     expect(last_response.body).to be_equivalent_to(fixture('anthropos.xml'))
   end
 
+  it 'should respond with information about verbs' do
+    get "/greek/#{CGI.escape('ποιεῖ')}"
+
+    expect(last_response).to be_ok
+    expect(last_response.body).to be_equivalent_to(fixture('poiei.xml'))
+  end
+
   it 'should accept beta code input' do
     get '/greek/a)%2Fnqrwpos'
 
