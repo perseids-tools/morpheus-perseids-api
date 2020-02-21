@@ -1,3 +1,5 @@
+require_relative './parser'
+
 class Morpheus
   OPTS = {
     'I' => '-i',
@@ -11,6 +13,14 @@ class Morpheus
   end
 
   def response(word, opts, lang)
+    Parser.parse(morpheus(word, opts, lang))
+  end
+
+  private
+
+  attr_reader :morphlib, :executable
+
+  def morpheus(word, opts, lang)
     command = [executable, *language_options(lang), *options(opts)]
 
     IO.popen({ 'MORPHLIB' => morphlib }, command, 'r+') do |io|
@@ -19,10 +29,6 @@ class Morpheus
       io.read
     end
   end
-
-  private
-
-  attr_reader :morphlib, :executable
 
   def language_options(lang)
     case lang

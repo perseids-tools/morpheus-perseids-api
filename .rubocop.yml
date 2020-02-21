@@ -1,4 +1,4 @@
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/EndAlignment:
@@ -11,7 +11,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Severity: refactor
 

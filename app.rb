@@ -2,8 +2,9 @@ require 'sinatra'
 require 'redis'
 require 'json'
 require 'beta_code'
-require './lib/config'
-require './lib/morpheus'
+
+require_relative './lib/config'
+require_relative './lib/morpheus'
 
 set :protection, except: [:path_traversal]
 set :morpheus, Morpheus.new(Config::MORPHLIB, Config::EXECUTABLE)
