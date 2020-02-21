@@ -1,28 +1,40 @@
+require 'redis'
+require 'json'
+
 require_relative './parser'
 
 class Morpheus
-  OPTS = {
-    'I' => '-i',
-    'V' => '-V',
-    'S' => '-S',
-  }
+  REDIS = Redis.new
 
-  def initialize(morphlib, executable)
+  def initialize(morphlib, executable, expiry)
     @morphlib = morphlib
     @executable = executable
+    @expiry = expiry
   end
 
-  def response(word, opts, lang)
-    Parser.parse(morpheus(word, opts, lang))
+  def response(word, latin: false, strict_case: true, verbs_only: false, verbose: false)
+    Parser.parse(cached(word, latin, strict_case, verbs_only, verbose))
   end
 
   private
 
-  attr_reader :morphlib, :executable
+  attr_reader :morphlib, :executable, :expiry
 
-  def morpheus(word, opts, lang)
-    command = [executable, *language_options(lang), *options(opts)]
+  def cached(word, latin, strict_case, verbs_only, verbose)
+    command = [executable, *options(latin, strict_case, verbs_only, verbose)]
 
+    key = [word, command].to_json
+    value = REDIS.get(key)
+
+    return value if value
+
+    morpheus(word, command).tap do |xml|
+      REDIS.set(key, xml)
+      REDIS.expire(key, expiry)
+    end
+  end
+
+  def morpheus(word, command)
     IO.popen({ 'MORPHLIB' => morphlib }, command, 'r+') do |io|
       io.puts(word)
       io.close_write
@@ -30,16 +42,12 @@ class Morpheus
     end
   end
 
-  def language_options(lang)
-    case lang
-    when :Latin then ['-L']
-    else []
-    end
-  end
-
-  def options(opts)
-    return [] unless opts
-
-    opts.upcase.chars.uniq.map { |c| OPTS[c] }.compact.sort
+  def options(latin, strict_case, verbs_only, verbose)
+    [
+      latin ? '-L' : nil,
+      strict_case ? nil : '-S',
+      verbs_only ? '-V' : nil,
+      verbose ? '-i' : nil,
+    ].compact
   end
 end

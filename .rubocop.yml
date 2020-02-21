@@ -58,3 +58,6 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+Style/EmptyElse:
+  EnforcedStyle: empty
