@@ -1,6 +1,8 @@
 require 'rack/test'
 require 'rspec'
 require 'rspec/matchers'
+require 'json'
+require 'erb'
 require 'equivalent-xml'
 
 ENV['RACK_ENV'] = 'test'
@@ -15,8 +17,14 @@ module RSpecMixin
   end
 
   def fixture(name)
-    File.open(File.join(__dir__, 'fixtures', name)).read
+    JSON.parse(File.open(File.join(__dir__, 'fixtures', name)).read)
   end
 end
 
-RSpec.configure { |c| c.include RSpecMixin }
+RSpec.configure do |config|
+  config.include RSpecMixin
+
+  config.before(:each) do
+    Redis.new.flushall
+  end
+end

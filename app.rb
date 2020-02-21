@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/namespace'
 require 'beta_code'
 
 require_relative './lib/config'
@@ -8,18 +9,20 @@ set :protection, except: [:path_traversal]
 set :morpheus, Morpheus.new(Config::MORPHLIB, Config::EXECUTABLE, Config::EXPIRY)
 set :port, Config::PORT
 
-get '/greek/:word' do
-  content_type :xml
+namespace '/raw' do
+  get '/greek/:word' do
+    content_type :xml
 
-  word = BetaCode.greek_to_beta_code(params[:word])
-  settings.morpheus.response(word, **query_options)
-end
+    word = params[:word]
+    settings.morpheus.raw(word, **query_options)
+  end
 
-get '/latin/:word' do
-  content_type :xml
+  get '/latin/:word' do
+    content_type :xml
 
-  word = params[:word]
-  settings.morpheus.response(word, latin: true, **query_options)
+    word = params[:word]
+    settings.morpheus.raw(word, latin: true, **query_options)
+  end
 end
 
 private
@@ -33,5 +36,5 @@ def query_options
     else
       nil
     end
-  end.compact
+  end.compact.to_h.transform_keys(&:to_sym)
 end

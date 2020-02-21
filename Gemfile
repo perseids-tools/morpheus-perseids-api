@@ -6,6 +6,7 @@ gem 'puma'
 gem 'rake'
 gem 'redis'
 gem 'sinatra'
+gem 'sinatra-contrib'
 
 group :development do
   gem 'rerun'
