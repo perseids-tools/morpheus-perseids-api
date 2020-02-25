@@ -9,6 +9,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 
 group :development do
+  gem 'bundler-audit'
   gem 'rerun'
   gem 'rubocop'
 end

@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: rerun --background 'ruby app.rb'
+    volumes:
+      - .:/app
+    ports:
+      - 1316:1316
