@@ -16,7 +16,7 @@ GEM
     mini_portile2 (2.4.0)
     multi_json (1.14.1)
     mustermann (1.0.3)
-    nokogiri (1.10.3)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     parser (2.7.0.2)
