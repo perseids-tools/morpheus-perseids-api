@@ -27,24 +27,33 @@ The simplest version would be:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-perseids-api:v1.0.0
+    image: perseidsproject/morpheus-perseids-api:v2.0.0
     ports:
       - "1316:1316"
 ```
 
-The port can be customized using an environment variable.
-For example, if you want to run on port 3000:
+The port can be customized using the environment variable `PORT` and the application
+can be configured to use Redis caching by setting `REDIS_ENABLED` to `true`.
+The Redis URL is configured using `REDIS_URL`.
+For example, the configuration to run on port 3000 and with Redis is:
 
 ```yaml
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-perseids-api:v1.0.0
+    image: perseidsproject/morpheus-perseids-api:v2.0.0
     environment:
       - PORT=3000
+      - REDIS_ENABLED=true
+      - REDIS_URL=redis://redis:6379
     ports:
       - "3000:3000"
+  redis:
+    image: redis:5.0.5
+    ports:
+     - "6379:6379"
 ```
+
 
 (See project on [Docker Hub](https://hub.docker.com/r/perseidsproject/morpheus-perseids-api/).)
 
@@ -65,7 +74,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 ### Examples
 
-`http://localhost:1316/greek/a)%2Fnqrwpos`:
+`http://localhost:1316/raw/greek/a)%2Fnqrwpos`:
 
 ```xml
 <words>
@@ -95,7 +104,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 </words>
 ```
 
-`http://localhost:1316/latin/cactus`:
+`http://localhost:1316/raw/latin/cactus`:
 
 ```xml
 <words>
@@ -125,7 +134,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 </words>
 ```
 
-`http://localhost:1316/greek/a)%2Fnqrwpos?opts=i`:
+`http://localhost:1316/raw/greek/a)%2Fnqrwpos?verbose=true`:
 
 ```xml
 <words>
@@ -185,26 +194,25 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 There are two routes:
 
-- `/greek/:word`
-- `/latin/:word`
+- `/raw/greek/:word`
+- `/raw/latin/:word`
 
 A GET request to one of those routes will call Morpheus with the input of `:word`.
-The `/greek` route will call it configured for Greek and the `/latin` route will
+The `/raw/greek` route will call it configured for Greek and the `/raw/latin` route will
 call it configured for Latin.
 
-Note that the `/greek` route expects the input to be in
+Note that the `/raw/greek` route expects the input to be in
 [Beta Code](https://en.wikipedia.org/wiki/Beta_Code). Also note that `/` needs
 to be escaped as `%2F`, so the word `ἄνθρωπος` would be entered as `a)%2Fnqrwpos`.
 
 #### Options
 
-Each route also accept the `?opts=:options` query parameter where `:options` contains the options
-sent to Morpheus. Each option is a single letter and can be combined with other options.
+Each route also accepts following query parameters which are passed to Morpheus:
 
-The full list of options and their equivalents in Morpheus Perseids is:
+| Option        | In Morpheus | Description |
+| ------------- | ----------- | ----------- |
+| strict\_case  | -S          | Set `?strict_case=true` to turn off Strict case. For Greek, this allows words with an initial capital to be recognized. For languages in the Roman alphabet, allows words with initial capital or in all capitals. |
+| verbs\_only   | -V          | Analyze verbs only. |
+| verbose       | -i          | Show more detailed output |
 
-| Option | In Morpheus | Description |
-| - | - | - |
-| s | -S | Turn off Strict case. For Greek, this allows words with an initial capital to be recognized. For languages in the Roman alphabet, allows words with initial capital or in all capitals. |
-| v | -V | Analyze verbs only. |
-| i | -i | Show more detailed output |
+The accepted values for each parameter are `true` and `false`.

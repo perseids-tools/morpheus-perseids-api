@@ -6,7 +6,7 @@ require_relative './lib/config'
 require_relative './lib/morpheus'
 
 set :protection, except: [:path_traversal]
-set :morpheus, Morpheus.new(Config::MORPHLIB, Config::EXECUTABLE, Config::EXPIRY)
+set :morpheus, Morpheus.new
 set :port, Config::PORT
 
 namespace '/raw' do

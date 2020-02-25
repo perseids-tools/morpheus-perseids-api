@@ -1,15 +1,16 @@
-require 'redis'
 require 'json'
 
+require_relative './config'
+require_relative './cache'
 require_relative './parser'
 
 class Morpheus
-  REDIS = Redis.new
+  CACHE = Cache.new
 
-  def initialize(morphlib, executable, expiry)
+  def initialize(morphlib: Config::MORPHLIB, executable: Config::EXECUTABLE)
     @morphlib = morphlib
     @executable = executable
-    @expiry = expiry
+    @cache = Cache.new
   end
 
   def raw(word, latin: false, strict_case: true, verbs_only: false, verbose: false)
@@ -22,20 +23,17 @@ class Morpheus
 
   private
 
-  attr_reader :morphlib, :executable, :expiry
+  attr_reader :morphlib, :executable, :cache
 
   def cached(word, latin, strict_case, verbs_only, verbose)
     command = [executable, *options(latin, strict_case, verbs_only, verbose)]
 
     key = [word, command].to_json
-    value = redis.get(key)
+    value = cache.get(key)
 
     return value if value
 
-    morpheus(word, command).tap do |xml|
-      redis.set(key, xml)
-      redis.expire(key, expiry)
-    end
+    cache.set(key, morpheus(word, command))
   end
 
   def morpheus(word, command)
@@ -53,9 +51,5 @@ class Morpheus
       verbs_only ? '-V' : nil,
       verbose ? '-i' : nil,
     ].compact
-  end
-
-  def redis
-    REDIS
   end
 end

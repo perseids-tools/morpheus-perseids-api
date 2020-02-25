@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require 'spec_helper'
 
 describe '/raw' do
   let(:morpheus) { fixture('morpheus.json') }

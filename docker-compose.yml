@@ -6,12 +6,13 @@ services:
     volumes:
       - .:/app
     ports:
-      - "1316:1316"
+      - 1316:1316
     depends_on:
       - redis
     environment:
+      - REDIS_ENABLED=true
       - REDIS_URL=redis://redis:6379
   redis:
     image: redis:5.0.5
     ports:
-     - "6379:6379"
+     - 6379:6379

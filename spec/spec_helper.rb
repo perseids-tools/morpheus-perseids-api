@@ -5,6 +5,8 @@ require 'json'
 require 'erb'
 require 'equivalent-xml'
 
+require_relative '../lib/config'
+
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../app.rb'
@@ -24,7 +26,5 @@ end
 RSpec.configure do |config|
   config.include RSpecMixin
 
-  config.before(:each) do
-    Redis.new.flushall
-  end
+  config.before(:each) { Redis.new.flushall } if Config::REDIS_ENABLED == 'true'
 end
