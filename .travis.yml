@@ -7,7 +7,7 @@ before_install:
   - docker-compose build
 
 script:
+  - docker-compose -f docker-compose.no-redis.yml run web rspec
   - docker-compose run web rubocop
   - docker-compose run web bundle audit --update
   - docker-compose run web rspec
-  - docker-compose -f docker-compose.test.yml run web rspec
