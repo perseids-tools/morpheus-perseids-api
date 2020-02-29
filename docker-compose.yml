@@ -6,13 +6,22 @@ services:
     volumes:
       - .:/app
     ports:
-      - 1316:1316
+      - 1500:1500
     depends_on:
       - redis
     environment:
       - REDIS_ENABLED=true
       - REDIS_URL=redis://redis:6379
   redis:
-    image: redis:5.0.5
+    image: redis:5.0.7
     ports:
      - 6379:6379
+  cache:
+    image: nginx:1.17.8
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./tmp/nginx:/var/cache/nginx
+    ports:
+      - 1501:1501
+    depends_on:
+      - web

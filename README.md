@@ -29,7 +29,7 @@ services:
   morph:
     image: perseidsproject/morpheus-perseids-api:v2.0.0
     ports:
-      - "1316:1316"
+      - "1500:1500"
 ```
 
 The port can be customized using the environment variable `PORT` and the application
@@ -74,7 +74,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 
 ### Examples
 
-`http://localhost:1316/raw/greek/a)%2Fnqrwpos`:
+`http://localhost:1500/raw/greek/a)%2Fnqrwpos`:
 
 ```xml
 <words>
@@ -104,7 +104,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 </words>
 ```
 
-`http://localhost:1316/raw/latin/cactus`:
+`http://localhost:1500/raw/latin/cactus`:
 
 ```xml
 <words>
@@ -134,7 +134,7 @@ MORPHLIB=/path/to/stemlib EXECUTABLE=/path/to/morpheus bundle exec ruby app.rb
 </words>
 ```
 
-`http://localhost:1316/raw/greek/a)%2Fnqrwpos?verbose=true`:
+`http://localhost:1500/raw/greek/a)%2Fnqrwpos?verbose=true`:
 
 ```xml
 <words>

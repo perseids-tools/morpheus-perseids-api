@@ -6,4 +6,4 @@ services:
     volumes:
       - .:/app
     ports:
-      - 1316:1316
+      - 1500:1500
