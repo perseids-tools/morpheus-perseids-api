@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class Degree
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<comp>#{@content}</comp>"
+          def bamboo_xml
+            @bamboo_xml ||= "<comp>#{content}</comp>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

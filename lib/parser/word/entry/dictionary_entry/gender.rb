@@ -4,12 +4,16 @@ module Parser
       class DictionaryEntry
         class Gender
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<gend>#{@content}</gend>"
+          def bamboo_xml
+            @bamboo_xml ||= "<gend>#{content}</gend>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

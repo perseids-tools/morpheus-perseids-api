@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class StemType
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<stemtype>#{@content}</stemtype>"
+          def bamboo_xml
+            @bamboo_xml ||= "<stemtype>#{content}</stemtype>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

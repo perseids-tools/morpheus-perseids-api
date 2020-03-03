@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class Voice
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<voice>#{@content}</voice>"
+          def bamboo_xml
+            @bamboo_xml ||= "<voice>#{content}</voice>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

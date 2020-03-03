@@ -3,9 +3,7 @@ require 'nokogiri'
 require_relative './parser/response'
 
 module Parser
-  def self.bamboo_xml(xml)
-    doc = Nokogiri::XML(xml)
-
-    Response.new(doc).to_xml
+  def self.bamboo_xml(word, latin, xml)
+    Response.new(word, latin, Nokogiri::XML(xml)).bamboo_xml
   end
 end

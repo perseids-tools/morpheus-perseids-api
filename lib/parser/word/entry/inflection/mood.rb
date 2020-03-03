@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class Mood
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<mood>#{@content}</mood>"
+          def bamboo_xml
+            @bamboo_xml ||= "<mood>#{content}</mood>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end
