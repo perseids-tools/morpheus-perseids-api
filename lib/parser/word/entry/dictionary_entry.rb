@@ -26,14 +26,16 @@ module Parser
           end
         end
 
-        def to_xml
-          @to_xml ||= %(<dict>#{components.map(&:to_xml).join("\n")}</dict>)
+        def bamboo_xml
+          @bamboo_xml ||= %(<dict>#{components.map(&:bamboo_xml).join("\n")}</dict>)
         end
 
         private
 
+        attr_reader :headword, :part_of_speech, :declension, :gender
+
         def components
-          [@headword, @part_of_speech, @declension, @gender].compact
+          [headword, part_of_speech, declension, gender].compact
         end
       end
     end

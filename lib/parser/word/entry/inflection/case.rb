@@ -4,13 +4,17 @@ module Parser
       class Inflection
         class Case
           def initialize(doc)
-            @content = doc.content
             @order = doc['order']
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= %(<case order="#{@order}">#{@content}</case>)
+          def bamboo_xml
+            @bamboo_xml ||= %(<case order="#{order}">#{content}</case>)
           end
+
+          private
+
+          attr_reader :order, :content
         end
       end
     end

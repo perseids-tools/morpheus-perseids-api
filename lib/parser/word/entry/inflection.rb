@@ -62,8 +62,8 @@ module Parser
         # rubocop:enable Metrics/AbcSize
         # rubocop:enable Metrics/MethodLength
 
-        def to_xml
-          @to_xml ||= %(<infl>#{components.map(&:to_xml).join("\n")}</infl>)
+        def bamboo_xml
+          @bamboo_xml ||= %(<infl>#{components.map(&:bamboo_xml).join("\n")}</infl>)
         end
 
         private

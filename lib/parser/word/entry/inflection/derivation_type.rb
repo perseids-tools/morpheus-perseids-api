@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class DerivationType
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<derivtype>#{@content}</derivtype>"
+          def bamboo_xml
+            @bamboo_xml ||= "<derivtype>#{content}</derivtype>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

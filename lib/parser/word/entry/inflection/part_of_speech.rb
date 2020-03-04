@@ -4,13 +4,17 @@ module Parser
       class Inflection
         class PartOfSpeech
           def initialize(doc)
-            @content = doc.content
             @order = doc['order']
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= %(<pofs order="#{@order}">#{@content}</pofs>)
+          def bamboo_xml
+            @bamboo_xml ||= %(<pofs order="#{order}">#{content}</pofs>)
           end
+
+          private
+
+          attr_reader :order, :content
         end
       end
     end

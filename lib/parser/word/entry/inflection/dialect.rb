@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class Dialect
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<dial>#{@content}</dial>"
+          def bamboo_xml
+            @bamboo_xml ||= "<dial>#{content}</dial>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end

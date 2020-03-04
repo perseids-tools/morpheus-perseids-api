@@ -1,12 +1,12 @@
 module Parser
   class Unknown
     def initialize(doc)
-      @content = doc.content
+      @content = doc.inner_html
       @language = doc['xml:lang']
     end
 
-    def to_xml
-      @to_xml ||= %(<unknown xml:lang="#{@language}">#{@content}</unknown>\n)
+    def bamboo_xml
+      @bamboo_xml ||= ''
     end
   end
 end

@@ -4,12 +4,16 @@ module Parser
       class Inflection
         class Declension
           def initialize(doc)
-            @content = doc.content
+            @content = doc.inner_html
           end
 
-          def to_xml
-            @to_xml ||= "<decl>#{@content}</decl>"
+          def bamboo_xml
+            @bamboo_xml ||= "<decl>#{content}</decl>"
           end
+
+          private
+
+          attr_reader :content
         end
       end
     end
