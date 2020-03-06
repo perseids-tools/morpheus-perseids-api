@@ -4,11 +4,11 @@ require 'beta_code'
 require_relative './word'
 require_relative './unknown'
 
-module Parser
+class Parser
   CREATED_DATE = '2020-01-01T00:00:00.000000'
 
   class Response
-    def initialize(word, latin, doc)
+    def initialize(word, doc, latin: false)
       @word = CGI.escapeHTML(word)
       @latin = latin
 

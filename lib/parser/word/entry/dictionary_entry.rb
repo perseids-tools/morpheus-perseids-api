@@ -5,7 +5,7 @@ require_relative './dictionary_entry/part_of_speech'
 require_relative './dictionary_entry/declension'
 require_relative './dictionary_entry/gender'
 
-module Parser
+class Parser
   class Word
     class Entry
       class DictionaryEntry

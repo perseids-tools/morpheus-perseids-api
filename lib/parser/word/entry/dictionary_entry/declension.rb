@@ -1,4 +1,4 @@
-module Parser
+class Parser
   class Word
     class Entry
       class DictionaryEntry

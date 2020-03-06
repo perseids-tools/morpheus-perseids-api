@@ -1,7 +1,7 @@
 require_relative './word/entry'
 require_relative './word/form'
 
-module Parser
+class Parser
   class Word
     def initialize(doc)
       @entries = doc.xpath('./entry').map { |i| Entry.new(i) }

@@ -1,4 +1,4 @@
-module Parser
+class Parser
   module Utils
     class NoMatchingClassError < StandardError
       def initialize(element)

@@ -15,7 +15,7 @@ require_relative './inflection/stem_type'
 require_relative './inflection/derivation_type'
 require_relative './inflection/morphology'
 
-module Parser
+class Parser
   class Word
     class Entry
       class Inflection

@@ -3,7 +3,7 @@ require 'digest'
 require_relative './entry/dictionary_entry'
 require_relative './entry/inflection'
 
-module Parser
+class Parser
   class Word
     class Entry
       def initialize(doc)

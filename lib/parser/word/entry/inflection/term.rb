@@ -3,7 +3,7 @@ require_relative '../../../utils'
 require_relative './term/stem'
 require_relative './term/suffix'
 
-module Parser
+class Parser
   class Word
     class Entry
       class Inflection

@@ -1,12 +1,15 @@
 require 'json'
 
-require_relative './converter'
 require_relative './config'
 require_relative './cache'
 require_relative './parser'
 
 class Morpheus
   CACHE = Cache.new
+
+  def self.raw(word, **kwargs)
+    Morpheus.new.raw(word, **kwargs)
+  end
 
   def initialize(morphlib: Config::MORPHLIB, executable: Config::EXECUTABLE)
     @morphlib = morphlib
@@ -16,12 +19,6 @@ class Morpheus
 
   def raw(word, latin: false, strict_case: true, verbs_only: false, verbose: false)
     cached(word, latin, strict_case, verbs_only, verbose)
-  end
-
-  def bamboo_xml(word, latin: false, strict_case: false, verbs_only: false, verbose: false)
-    input = latin ? word : Converter.greek_to_beta_code(word)
-
-    Parser.bamboo_xml(word, latin, cached(input, latin, strict_case, verbs_only, verbose))
   end
 
   private

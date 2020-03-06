@@ -1,25 +1,26 @@
 require 'sinatra'
 require 'sinatra/namespace'
+require 'sinatra/respond_with'
 
 require_relative './lib/config'
 require_relative './lib/morpheus'
+require_relative './lib/parser'
 require_relative './lib/error'
 
 set :protection, except: [:path_traversal]
-set :morpheus, Morpheus.new
 set :port, Config::PORT
 
 namespace '/raw' do
   get '/greek/:word' do
     content_type :xml
 
-    settings.morpheus.raw(word, **query_options)
+    Morpheus.raw(word, **query_options)
   end
 
   get '/latin/:word' do
     content_type :xml
 
-    settings.morpheus.raw(word, latin: true, **query_options)
+    Morpheus.raw(word, latin: true, **query_options)
   end
 end
 
@@ -28,12 +29,17 @@ namespace '/analysis' do
     content_type :xml
 
     if !valid_engine?
-      [404, Error.new('unknown engine').bamboo_xml]
+      code = 404
+      response = Error.new('unknown engine')
     elsif !valid_language?
-      [404, Error.new('unsupported language').bamboo_xml]
+      code = 404
+      response = Error.new('unsupported language')
     else
-      [201, settings.morpheus.bamboo_xml(word, latin: latin?)]
+      code = 201
+      response = Parser.new(word, latin: latin?)
     end
+
+    [code, response.bamboo_xml]
   end
 end
 

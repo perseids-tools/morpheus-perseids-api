@@ -1,4 +1,4 @@
-module Parser
+class Parser
   class Word
     class Form
       def initialize(doc)

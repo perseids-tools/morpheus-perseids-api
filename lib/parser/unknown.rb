@@ -1,4 +1,4 @@
-module Parser
+class Parser
   class Unknown
     def initialize(doc)
       @content = doc.inner_html
