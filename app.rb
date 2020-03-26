@@ -26,8 +26,6 @@ end
 
 namespace '/analysis' do
   get '/word' do
-    content_type :xml
-
     if !valid_engine?
       code = 404
       response = Error.new('unknown engine')
@@ -39,7 +37,10 @@ namespace '/analysis' do
       response = Parser.new(word, latin: latin?)
     end
 
-    [code, response.bamboo_xml]
+    respond_to do |f|
+      f.json { [code, response.bamboo_json] }
+      f.xml { [code, response.bamboo_xml] }
+    end
   end
 end
 

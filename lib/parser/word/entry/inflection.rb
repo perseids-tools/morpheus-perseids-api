@@ -5,6 +5,7 @@ require_relative './inflection/part_of_speech'
 require_relative './inflection/declension'
 require_relative './inflection/case'
 require_relative './inflection/gender'
+require_relative './inflection/degree'
 require_relative './inflection/mood'
 require_relative './inflection/number'
 require_relative './inflection/person'
@@ -64,6 +65,10 @@ class Parser
 
         def bamboo_xml
           @bamboo_xml ||= %(<infl>#{components.map(&:bamboo_xml).join("\n")}</infl>)
+        end
+
+        def bamboo_json
+          @bamboo_json ||= components.reduce({}) { |m, n| m.merge!(n.bamboo_json) }
         end
 
         private

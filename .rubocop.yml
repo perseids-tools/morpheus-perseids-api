@@ -18,6 +18,9 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'spec/**/*'
+  ExcludedMethods:
+    - bamboo_xml
+    - bamboo_json
 
 Metrics/ModuleLength:
   Exclude:

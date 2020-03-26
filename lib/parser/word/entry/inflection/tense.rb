@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<tense>#{content}</tense>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              tense: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

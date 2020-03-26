@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<morph>#{content}</morph>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              morph: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

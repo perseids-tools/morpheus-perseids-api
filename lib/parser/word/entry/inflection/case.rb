@@ -12,6 +12,15 @@ class Parser
             @bamboo_xml ||= %(<case order="#{order}">#{content}</case>)
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              case: {
+                order: order.to_i,
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :order, :content

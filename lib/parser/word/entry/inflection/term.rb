@@ -29,6 +29,14 @@ class Parser
             @bamboo_xml ||= %(<term xml:lang="#{language}">#{components.map(&:bamboo_xml).join}</term>)
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              term: {
+                lang: language,
+              }.merge!(components.reduce({}) { |m, n| m.merge!(n.bamboo_json) }),
+            }
+          end
+
           private
 
           attr_reader :language, :stem, :suffix

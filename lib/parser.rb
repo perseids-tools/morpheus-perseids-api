@@ -13,13 +13,17 @@ class Parser
     response.bamboo_xml
   end
 
+  def bamboo_json
+    response.bamboo_json.to_json
+  end
+
   private
 
   attr_reader :word, :latin
 
   def morpheus_output
     @morpheus_output ||= Morpheus.raw(
-      latin ? word : Converter.greek_to_beta_code(word),
+      latin ? Converter.latin_transform(word) : Converter.greek_to_beta_code(word),
       latin: latin,
       strict_case: false,
     )

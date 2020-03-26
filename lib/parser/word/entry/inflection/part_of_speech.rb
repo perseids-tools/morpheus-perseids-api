@@ -12,6 +12,15 @@ class Parser
             @bamboo_xml ||= %(<pofs order="#{order}">#{content}</pofs>)
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              pofs: {
+                order: order.to_i,
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :order, :content
