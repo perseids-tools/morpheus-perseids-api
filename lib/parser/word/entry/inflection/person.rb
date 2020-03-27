@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= %(<pers>#{content}</pers>)
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              pers: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

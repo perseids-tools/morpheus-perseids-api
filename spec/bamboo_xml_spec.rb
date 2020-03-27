@@ -3,6 +3,8 @@ require 'spec_helper'
 describe '/analysis/word (xml)' do
   let(:morphsvc) { fixture('morphsvc-xml.json') }
 
+  before { header 'Accept', 'application/xml' }
+
   specify 'Greek analyses' do
     morphsvc['greek'].each do |word, xml|
       get "/analysis/word?lang=grc&engine=morpheusgrc&word=#{ERB::Util.url_encode(word)}"

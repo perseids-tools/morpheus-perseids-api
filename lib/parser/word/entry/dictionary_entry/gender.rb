@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<gend>#{content}</gend>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              gend: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

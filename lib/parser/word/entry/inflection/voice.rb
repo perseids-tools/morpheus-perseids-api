@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<voice>#{content}</voice>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              voice: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

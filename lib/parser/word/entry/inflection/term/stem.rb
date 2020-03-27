@@ -16,6 +16,14 @@ class Parser
               @bamboo_xml ||= "<stem>#{content}</stem>"
             end
 
+            def bamboo_json
+              @bamboo_json ||= {
+                stem: {
+                  '$': content,
+                },
+              }
+            end
+
             private
 
             attr_reader :content

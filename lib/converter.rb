@@ -42,12 +42,36 @@ class Converter
     _: '',
   }
 
+  # Taken from:
+  # https://github.com/perseids-project/morphsvc/blob/master/morphsvc/lib/transformers/LatinTransformer.py
+  LATIN_TRANSFORMS = [
+    [/[^\w\d\s]/, ''],
+    [/[ÀÁÂÃÄĀĂ]/, 'A'],
+    [/[ÈÉÊËĒĔ]/, 'E'],
+    [/[ÌÍÎÏĪĬ]/, 'I'],
+    [/[ÒÓÔßÖŌŎ]/, 'O'],
+    [/[ÙÚÛÜŪŬ]/, 'U'],
+    [/[ÆǢ]/, 'AE'],
+    [/[Œ]/, 'OE'],
+    [/[àáâãäāă]/, 'a'],
+    [/[èéêëēĕ]/, 'e'],
+    [/[ìíîïīĭĩ]/, 'i'],
+    [/[òóôõöōŏ]/, 'o'],
+    [/[ùúûüūŭ]/, 'u'],
+    [/[æǣ]/, 'ae'],
+    [/[œ]/, 'oe'],
+  ]
+
   def self.beta_code_to_greek(word)
     BetaCode.beta_code_to_greek(word, custom_map: MORPHEUS_CUSTOM_BETA_TO_GREEK)
   end
 
   def self.greek_to_beta_code(word)
     BetaCode.greek_to_beta_code(word, custom_map: MORPHEUS_CUSTOM_GREEK_TO_BETA)
+  end
+
+  def self.latin_transform(word)
+    LATIN_TRANSFORMS.reduce(word) { |string, (regex, replace)| string.gsub(regex, replace) }
   end
 
   # To differentiate between identical headwords in Latin, Morpheus appends #1, #2, etc.

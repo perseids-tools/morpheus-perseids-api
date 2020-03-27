@@ -34,6 +34,31 @@ class Parser
       XML
     end
 
+    def bamboo_json
+      @bamboo_json ||= {
+        RDF: {
+          Annotation: {
+            about: morphology_service,
+            creator: {
+              Agent: {
+                about: 'org.perseus:tools:morpheus.v1',
+              },
+            },
+            created: {
+              '$': CREATED_DATE,
+            },
+            hasTarget: {
+              Description: {
+                about: "urn:word:#{word}",
+              },
+            },
+            title: {
+            },
+          }.merge!(components_json),
+        },
+      }
+    end
+
     private
 
     attr_reader :word, :latin, :words, :unknowns
@@ -44,6 +69,16 @@ class Parser
 
     def morphology_service
       "urn:TuftsMorphologyService:#{word}:morpheus#{latin ? 'lat' : 'grc'}"
+    end
+
+    def components_json
+      entries = words.flat_map(&:entries)
+
+      case entries.size
+      when 0 then {}
+      when 1 then { hasBody: entries.first.bamboo_has_body_json, Body: entries.first.bamboo_body_json }
+      else { hasBody: entries.map(&:bamboo_has_body_json), Body: entries.map(&:bamboo_body_json) }
+      end
     end
   end
 end

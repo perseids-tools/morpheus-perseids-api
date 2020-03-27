@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<derivtype>#{content}</derivtype>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              derivtype: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

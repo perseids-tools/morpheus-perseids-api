@@ -8,5 +8,9 @@ class Parser
     def bamboo_xml
       @bamboo_xml ||= ''
     end
+
+    def bamboo_json
+      @bamboo_json ||= {}
+    end
   end
 end

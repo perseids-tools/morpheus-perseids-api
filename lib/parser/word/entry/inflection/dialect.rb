@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<dial>#{content}</dial>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              dial: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

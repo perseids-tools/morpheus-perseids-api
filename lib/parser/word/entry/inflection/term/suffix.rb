@@ -16,6 +16,14 @@ class Parser
               @bamboo_xml ||= "<suff>#{content}</suff>"
             end
 
+            def bamboo_json
+              @bamboo_json ||= {
+                suff: {
+                  '$': content,
+                },
+              }
+            end
+
             private
 
             attr_reader :content

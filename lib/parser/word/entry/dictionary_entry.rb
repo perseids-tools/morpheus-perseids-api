@@ -30,6 +30,10 @@ class Parser
           @bamboo_xml ||= %(<dict>#{components.map(&:bamboo_xml).join("\n")}</dict>)
         end
 
+        def bamboo_json
+          @bamboo_json ||= components.reduce({}) { |m, n| m.merge!(n.bamboo_json) }
+        end
+
         private
 
         attr_reader :headword, :part_of_speech, :declension, :gender

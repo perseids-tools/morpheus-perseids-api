@@ -21,6 +21,15 @@ class Parser
             @bamboo_xml ||= %(<hdwd xml:lang="#{language}">#{content}</hdwd>)
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              hdwd: {
+                lang: language,
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :language, :content

@@ -11,6 +11,14 @@ class Parser
             @bamboo_xml ||= "<mood>#{content}</mood>"
           end
 
+          def bamboo_json
+            @bamboo_json ||= {
+              mood: {
+                '$': content,
+              },
+            }
+          end
+
           private
 
           attr_reader :content

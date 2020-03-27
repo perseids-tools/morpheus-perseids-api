@@ -4,7 +4,15 @@ class Error
   end
 
   def bamboo_xml
-    "<error>#{message}</error>"
+    @bamboo_xml ||= "<error>#{message}</error>"
+  end
+
+  def bamboo_json
+    @bamboo_json ||= {
+      error: {
+        '$': message,
+      },
+    }.to_json
   end
 
   private

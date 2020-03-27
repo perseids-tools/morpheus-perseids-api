@@ -12,8 +12,10 @@ class Parser
       @bamboo_xml ||= entries.map(&:bamboo_xml).join("\n")
     end
 
+    attr_reader :entries
+
     private
 
-    attr_reader :entries, :forms
+    attr_reader :forms
   end
 end
