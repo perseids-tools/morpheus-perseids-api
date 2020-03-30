@@ -1,0 +1,10 @@
+{
+  "json": {
+    "morpheusgrc": "{\"enginelist\":{\"engine\":{\"code\":\"morpheusgrc\",\"supportsLanguageCode\":[{\"$\":\"grc\"},{\"$\":\"la\"},{\"$\":\"lat\"}],\"supportsOption\":{\"$\":\"strictCase=^1$\"}}}}",
+    "morpheuslat": "{\"enginelist\":{\"engine\":{\"code\":\"morpheuslat\",\"supportsLanguageCode\":[{\"$\":\"grc\"},{\"$\":\"la\"},{\"$\":\"lat\"}],\"supportsOption\":{\"$\":\"strictCase=^1$\"}}}}"
+  },
+  "xml": {
+    "morpheusgrc": "<enginelist>\n  <engine code=\"morpheusgrc\">\n    <supportsLanguageCode>grc</supportsLanguageCode>\n    <supportsLanguageCode>la</supportsLanguageCode>\n    <supportsLanguageCode>lat</supportsLanguageCode>\n    <supportsOption>strictCase=^1$</supportsOption>\n  </engine>\n</enginelist>\n",
+    "morpheuslat": "<enginelist>\n  <engine code=\"morpheuslat\">\n    <supportsLanguageCode>grc</supportsLanguageCode>\n    <supportsLanguageCode>la</supportsLanguageCode>\n    <supportsLanguageCode>lat</supportsLanguageCode>\n    <supportsOption>strictCase=^1$</supportsOption>\n  </engine>\n</enginelist>\n"
+  }
+}
