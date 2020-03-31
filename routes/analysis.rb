@@ -2,7 +2,7 @@ require_relative '../lib/parser'
 require_relative '../lib/error'
 
 namespace '/analysis' do
-  get '/word' do
+  responder = lambda do
     if !valid_engine?
       code = 404
       response = Error.new('unknown engine')
@@ -19,6 +19,9 @@ namespace '/analysis' do
       f.xml { [code, response.bamboo_xml] }
     end
   end
+
+  get '/word', &responder
+  post '/word', &responder
 end
 
 private
