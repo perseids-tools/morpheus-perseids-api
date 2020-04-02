@@ -66,8 +66,8 @@ of a setup using both Redis and Nginx caching.
 
 Requirements:
 
-- ruby (~2.5)
-- bundler
+- Ruby (~2.5)
+- Bundler
 
 ```bash
 bundle install
