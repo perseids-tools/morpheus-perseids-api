@@ -11,3 +11,7 @@ require_relative './lib/config'
 set :protection, except: [:path_traversal]
 set :strict_paths, false
 set :port, Config::PORT
+
+get '*' do
+  [404, '<h1>Not found</h1>']
+end
