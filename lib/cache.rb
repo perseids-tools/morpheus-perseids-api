@@ -19,10 +19,15 @@ class Cache
   def set(key, value)
     return value unless redis_enabled
 
-    value.tap do |v|
-      redis.set(key, v)
+    # If Redis goes down we don't want the application to stop working
+    begin
+      redis.set(key, value)
       redis.expire(key, expiry)
+    rescue StandardError => e
+      warn("Error: #{e}")
     end
+
+    value
   end
 
   private
