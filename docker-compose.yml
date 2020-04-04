@@ -13,11 +13,11 @@ services:
       - REDIS_ENABLED=true
       - REDIS_URL=redis://redis:6379
   redis:
-    image: redis:5.0.7
+    image: redis:5.0.8
     ports:
       - 6379:6379
   cache:
-    image: nginx:1.17.8
+    image: nginx:1.17.9
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./tmp/nginx:/var/cache/nginx
