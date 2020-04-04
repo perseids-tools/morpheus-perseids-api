@@ -26,5 +26,8 @@ end
 RSpec.configure do |config|
   config.include RSpecMixin
 
-  config.before(:each) { Redis.new.flushall } if Config::REDIS_ENABLED == 'true'
+  if Config::REDIS_ENABLED == 'true'
+    config.before(:all) { Redis.new.flushall }
+    config.after(:each) { Redis.new.flushall }
+  end
 end
