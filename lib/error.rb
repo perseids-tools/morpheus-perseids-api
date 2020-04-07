@@ -12,7 +12,7 @@ class Error
       error: {
         '$': message,
       },
-    }.to_json
+    }
   end
 
   private

@@ -25,6 +25,7 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Exclude:
     - 'spec/**/*'
+    - 'scripts/attributes.rb'
 
 Metrics/ParameterLists:
   CountKeywordArgs: false

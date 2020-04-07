@@ -15,7 +15,7 @@ namespace '/analysis' do
     end
 
     respond_to do |f|
-      f.json { [code, response.bamboo_json] }
+      f.json { [code, response.bamboo_json.to_json] }
       f.xml { [code, response.bamboo_xml] }
     end
   end

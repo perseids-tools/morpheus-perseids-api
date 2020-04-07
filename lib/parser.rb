@@ -1,5 +1,6 @@
 require 'nokogiri'
 
+require_relative './morpheus'
 require_relative './converter'
 require_relative './parser/response'
 
@@ -15,7 +16,7 @@ class Parser
   end
 
   def bamboo_json
-    response.bamboo_json.to_json
+    response.bamboo_json
   end
 
   private
