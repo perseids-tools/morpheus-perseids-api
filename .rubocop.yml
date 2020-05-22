@@ -1,3 +1,6 @@
+AllCops:
+  NewCops: enable
+
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
