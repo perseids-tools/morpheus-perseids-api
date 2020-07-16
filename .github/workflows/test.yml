@@ -1,0 +1,35 @@
+name: Run tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.5'
+
+      - name: Build application
+        run: docker-compose build
+
+      - name: Test without Redis
+        run: docker-compose -f docker-compose.no-redis.yml run web rspec
+
+      - name: Test with Redis
+        run: docker-compose run web rspec
+
+      - name: Install bundler locally
+        run: gem install bundler
+
+      - name: Install dependencies locally
+        run: bundle install
+
+      - name: Lint code
+        run: bundle exec rubocop
+
+      - name: Audit code
+        run: bundle exec bundler-audit check --update
