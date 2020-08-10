@@ -1,4 +1,4 @@
-FROM perseidsproject/morpheus-perseids:v1.0.0
+FROM perseidsproject/morpheus-perseids:v1.0.1
 
 ENV LANG C.UTF-8
 
