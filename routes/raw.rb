@@ -22,9 +22,10 @@ end
 
 def query_options
   params.slice(:strict_case, :verbs_only, :verbose).transform_values do |param|
-    if param == 'true'
+    case param
+    when 'true'
       true
-    elsif param == 'false'
+    when 'false'
       false
     else
       nil

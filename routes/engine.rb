@@ -14,12 +14,12 @@ namespace '/engine' do
   end
 
   get '/:engine' do
-    if !valid_engine?
-      code = 404
-      response = Error.new('unknown engine')
-    else
+    if valid_engine?
       code = 200
       response = Engine.new(engine)
+    else
+      code = 404
+      response = Error.new('unknown engine')
     end
 
     respond_to do |f|

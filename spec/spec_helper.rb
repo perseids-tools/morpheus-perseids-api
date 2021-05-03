@@ -9,7 +9,7 @@ require_relative '../lib/config'
 
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../app.rb'
+require_relative '../app'
 
 module RSpecMixin
   include Rack::Test::Methods

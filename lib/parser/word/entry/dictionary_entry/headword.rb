@@ -9,10 +9,11 @@ class Parser
             @language = doc['xml:lang']
             @content = doc.inner_html
 
-            if language == 'grc-x-beta'
+            case language
+            when 'grc-x-beta'
               @content = Converter.beta_code_to_greek(content)
               @language = 'grc'
-            elsif language == 'lat'
+            when 'lat'
               @content = Converter.latin_headword(content)
             end
           end

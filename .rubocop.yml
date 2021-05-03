@@ -21,7 +21,7 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'spec/**/*'
-  ExcludedMethods:
+  IgnoredMethods:
     - bamboo_xml
     - bamboo_json
 
