@@ -27,7 +27,7 @@ The simplest version would be:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-perseids-api:v2.1.5
+    image: perseidsproject/morpheus-perseids-api:v2.1.7
     ports:
       - "1500:1500"
 ```
@@ -41,7 +41,7 @@ For example, the configuration to run on port 3000 and with Redis is:
 version: '3'
 services:
   morph:
-    image: perseidsproject/morpheus-perseids-api:v2.1.5
+    image: perseidsproject/morpheus-perseids-api:v2.1.7
     environment:
       - PORT=3000
       - REDIS_ENABLED=true
@@ -66,7 +66,7 @@ of a setup using both Redis and Nginx caching.
 
 Requirements:
 
-- Ruby (~2.5)
+- Ruby (~2.7)
 - Bundler
 
 ```bash

@@ -1,5 +1,6 @@
-FROM perseidsproject/morpheus-perseids:v1.0.1
+FROM perseidsproject/morpheus-perseids:v1.0.2
 
+ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
 
 RUN apt-get update -qq && apt-get install -qq -y ruby ruby-dev libxml2 libxml2-dev libxslt1-dev
