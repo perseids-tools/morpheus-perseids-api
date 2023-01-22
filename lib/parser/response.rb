@@ -52,8 +52,7 @@ class Parser
                 about: "urn:word:#{word}",
               },
             },
-            title: {
-            },
+            title: {},
           }.merge!(components_json),
         },
       }

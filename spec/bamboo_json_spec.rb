@@ -45,8 +45,7 @@ describe '/analysis/word (json)' do
               'about' => 'urn:word:not-a-word',
             },
           },
-          'title' => {
-          },
+          'title' => {},
         },
       },
     }

@@ -19,7 +19,7 @@ module RSpecMixin
   end
 
   def fixture(name)
-    JSON.parse(File.open(File.join(__dir__, 'fixtures', name)).read)
+    JSON.parse(File.read(File.join(__dir__, 'fixtures', name)))
   end
 end
 

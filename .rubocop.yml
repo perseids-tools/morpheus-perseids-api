@@ -21,7 +21,7 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'spec/**/*'
-  IgnoredMethods:
+  AllowedMethods:
     - bamboo_xml
     - bamboo_json
 
@@ -52,9 +52,6 @@ Style/StringLiterals:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-Style/TernaryParentheses:
-  EnforcedStyle: require_parentheses
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
