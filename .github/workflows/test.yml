@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.0
 
       - name: Build application
         run: docker-compose build
@@ -22,7 +22,7 @@ jobs:
         run: docker-compose run web rspec
 
       - name: Install bundler locally
-        run: gem install bundler
+        run: gem install bundler --version 2.4.5
 
       - name: Install dependencies locally
         run: bundle install
