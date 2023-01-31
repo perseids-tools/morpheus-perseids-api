@@ -1,3 +1,7 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   NewCops: enable
 
@@ -21,7 +25,7 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'spec/**/*'
-  IgnoredMethods:
+  AllowedMethods:
     - bamboo_xml
     - bamboo_json
 
@@ -53,9 +57,6 @@ Style/StringLiterals:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
-Style/TernaryParentheses:
-  EnforcedStyle: require_parentheses
-
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
@@ -69,4 +70,13 @@ Style/EmptyElse:
   EnforcedStyle: empty
 
 Style/AsciiComments:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/DescribeClass:
   Enabled: false

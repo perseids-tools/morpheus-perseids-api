@@ -17,8 +17,6 @@ describe '/analysis/word (json)' do
       get "/analysis/word?lang=lat&engine=morpheuslat&word=#{word}"
 
       expect(last_response).to be_created
-
-      expect(JSON.parse(last_response.body)).to eq(JSON.parse(json))
       expect(JSON.parse(last_response.body)).to eq(JSON.parse(json))
     end
   end
@@ -45,8 +43,7 @@ describe '/analysis/word (json)' do
               'about' => 'urn:word:not-a-word',
             },
           },
-          'title' => {
-          },
+          'title' => {},
         },
       },
     }

@@ -19,7 +19,7 @@ module RSpecMixin
   end
 
   def fixture(name)
-    JSON.parse(File.open(File.join(__dir__, 'fixtures', name)).read)
+    JSON.parse(File.read(File.join(__dir__, 'fixtures', name)))
   end
 end
 
@@ -28,6 +28,6 @@ RSpec.configure do |config|
 
   if Config::REDIS_ENABLED == 'true'
     config.before(:all) { Redis.new.flushall }
-    config.after(:each) { Redis.new.flushall }
+    config.after { Redis.new.flushall }
   end
 end
